@@ -1,5 +1,20 @@
 <!-- EXAMPLE 1 -->
 <?php
+static $a = "Hola";
+const b = "mundo!\n";
+printf("%s %s", $a, b);
+echo $a . " " . b;
+?>
+
+<?php
+class foo {
+    const test = 'foobar!';
+}
+
+echo foo::test;
+?>
+
+<?php
 // single quoted vs double quoted -> double (escaped chars, eg.: \n)
 
 
@@ -91,3 +106,18 @@ $foo = "10.0 pigs " + 1;          // $foo is float (11)
 $foo = "10.0 pigs " + 1.0;        // $foo is float (11)     
 ?>
 <!-- END EXAMPLE 4 -->
+
+<!-- EXAMPLE 5 -->
+<?php
+$date = "05-07-2016";
+$exploded = explode("-",$date); // ["05", "07", "2016"]
+$year = $exploded[2];
+$month = $exploded[1];
+$day = $exploded[0];
+?>
+
+<?php
+$types = ["cappuccino", "espresso"];
+$str = "Making a cup of ".join(", ", $types); // "Making a cup of cappuccino, espresso"
+?>
+<!-- END EXAMPLE 5 -->
