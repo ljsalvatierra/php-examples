@@ -67,6 +67,15 @@ $last = $str[strlen($str)-1];
 $str = 'Look at the sea';
 $str[strlen($str)-1] = 'e';
 
+// String heredoc format
+// <pre> is used to show the text with format in html
+$random = mt_rand(000000, 999999);
+$str = <<<EOT
+Esto es un número
+    random
+        $random
+EOT;
+echo "<pre>$str</>";
 ?>
 <!-- END EXAMPLE 3 -->
 

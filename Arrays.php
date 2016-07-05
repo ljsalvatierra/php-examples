@@ -2,6 +2,7 @@
 <?php
 // no keys
 $array = array("foo", "bar", "hello", "world");
+$numElem = count($array);
 var_dump($array);
 print_r($array);
 
