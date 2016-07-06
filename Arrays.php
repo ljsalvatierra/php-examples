@@ -18,8 +18,10 @@ var_dump($array);
 
 // mixed
 $array = array("foo", "bar" => "foo bar", "hello", "world");
-var_dump($array["bar"]); // string(7) "foo bar"
-var_dump($array{"bar"}); // string(7) "foo bar"
+if (is_array($array) && array_key_exists("bar", $array) {
+    var_dump($array["bar"]); // string(7) "foo bar"
+    var_dump($array{"bar"}); // string(7) "foo bar"
+}
 ?>
 <!-- END EXAMPLE 1 -->
 
