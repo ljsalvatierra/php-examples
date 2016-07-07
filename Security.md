@@ -57,7 +57,7 @@ echo htmlentities($logstring, ENT_QUOTES);
 * Connecting to DB: SSL/SSH
 * Encrypted Storage Model
     * Hashing
-    ```
+    ```php
 
 <?php
 
@@ -86,10 +86,36 @@ if ($stmt2->execute()) {
 ?>
     ```
 
-## Avoidance Techniques
+### Avoidance Techniques
 
 * Never connect to the database as a superuser or as the database owner. Use always customized users with very limited privileges.
 * Use prepared statements with bound variables. They are provided by PDO, by MySQLi and by other libraries.
 * Check if the given input has the expected data type. PHP has a wide range of input validating functions, from the simplest ones found in Variable Functions and in Character Type Functions (e.g. *is_numeric(), ctype_digit()* respectively) and onwards to the Perl compatible Regular Expressions support.
 
-* If the application waits for numerical input, consider verifying data with *ctype_digit()*, or silently change its type using settype(), or use its numeric representation by sprintf(). 
+* If the application waits for numerical input, consider verifying data with *ctype_digit()*, or silently change its type using settype(), or use its numeric representation by sprintf().
+
+## Error reporting
+
+* Prior to deployment, test the code with **E_ALL** and find areas where variables may be open to poisoning or modification.
+* Once ready for deployment, disable all error reporting by setting *error_reporting()* to *0*, or turn off error display using the *php.ini* option *display_errors*.
+    * You should also define the path to your log file using the *error_log* ini directive, and turn *log_errors* *on*.
+
+## Security by obscurity
+
+* Turn off *expose_php* option in *php.ini*
+
+## To have in mind
+
+* HTTP authentication with PHP.
+    * *PHP_AUTH_USER* and *header()*.
+* Cookies.
+    * *setcookie(...)*.
+* Sessions.
+* Handling file uploads.
+    * Check *$_FILES* structure and values. [(link)](http://php.net/manual/en/features.file-upload.php#114004)
+    * *$_FILES['userfile'][<'name','type','size','tmp_name','error'>]*
+
+* Connection handling.
+    * Connection status: 0-NORMAL, 1-ABORTED, 2-TIMEOUT(30s), 3-ABORTED and TIMEOUT.
+    * *php.ini*: *ignore_user_abort*, *max_execution_time*.
+* Persistent Database Connections.
