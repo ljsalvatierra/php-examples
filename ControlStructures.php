@@ -48,8 +48,8 @@ foreach ($array as list($a, $b)) { // you can also ask for fewer elements "as li
 }
 
 $array = ["foo", "bar"];
-list(, $elem) = each($array); // $elem = foo
-list($elem) = each($array);   // $elem = 0 | 1 if you run both statements
+list(, $value) = each($array); // $elem = foo
+list($key) = each($array);   // $key = 0 | 1 if you run both statements
 ?>
 <!-- END EXAMPLE 3 -->
 

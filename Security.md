@@ -68,11 +68,20 @@ stmt->bindParam(':value', $value);
 
 $name = $username;
 $value = password_hash($password, PASSWORD_DEFAULT));
+
+if (!is_object($stmt)) {
+    die();
+}
 $stmt->execute();
+
 
 // querying if user submitted the right password
 $stmt2 = $dbh->prepare("SELECT pwd FROM users WHERE name = :name");
 $stmt2->bindParam(':name', $name);
+
+if (!is_object($stmt)) {
+    die();
+}
 
 if ($stmt2->execute()) {
     $row = $stmt2->fetch();
